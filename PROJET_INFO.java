@@ -1,7 +1,7 @@
 /*
- * test.java
+ * PROJET_INFOjava
  * 
- * Copyright 2022 YANNICK <YANNICK@LAPTOP-R74P15TG>
+ * Copyright 2022 aserarfi01 <aserarfi01@SEC-C212-F18>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,28 +22,16 @@
  */
 
 
-
-
-//Problemes restants:
-
-//les mots affichés peuvent contenir plusieurs fois les lettres du tirage qui ne sont pourtant présentes qu'une seule fois dans le tirage
-//probleme des accents
-
-//Les mots ne sont pas triés dans l'ordre des points. (j'ai réussi pour les lettres mais pas les points).
-
-//le probleme des accents.
-
-//le fait de demander à l'utilisateur de copier coller est pas optimal, même si le résultat est la.
-
 import java.io.FileReader;
 import java.io.FileWriter;
-
+import java.io.IOException;
 import java.io.*;
 import java.util.Scanner;
 public class PROJET_INFO {
 	
-	public static void main (String[] args) {
-		
+	public static void main (String[] args) throws IOException {
+		File temporaire = new File("temporaire.txt");
+		BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 		String L1m,L1M,L2m,L2M,L3m,L3M,L4m,L4M,L5m,L5M,L6m,L6M,L7m,L7M;
 		String L1NM, L2NM, L3NM, L4NM, L5NM, L6NM, L7NM, L8NM, L9NM, L10NM, L11NM, L12NM, L13NM, L14NM, L15NM, L16NM, L17NM, L18NM, L19NM;
 		String L1Nm,L2Nm,L3Nm,L4Nm,L5Nm,L6Nm,L7Nm,L8Nm,L9Nm,L10Nm,L11Nm,L12Nm,L13Nm,L14Nm,L15Nm,L16Nm,L17Nm,L18Nm,L19Nm;
@@ -244,9 +232,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=7&&count<=7){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+						    sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -358,9 +344,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=6&&count<=6){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -471,9 +455,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=5&&count<=5){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -584,9 +566,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=4&&count<=4){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -697,9 +677,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=3&&count<=3){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -810,9 +788,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=2&&count<=2){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -923,9 +899,7 @@ public class PROJET_INFO {
 							}
 						}
 						if (count>=1&&count<=1){
-							System.out.println(line+" vaut "+points+" points");
-							
-						    System.out.println("");
+							sortie.write(line + System.getProperty("line.separator"));
 						}
 						else{
 						}	
@@ -942,7 +916,50 @@ public class PROJET_INFO {
 		
 		//Trier les mots en fonction du nombre de lettres
 		//Trier les mots en fonctions du nombre de points
-	
+	int t_rep;	
+		Scanner t = new Scanner(System.in);
+		System.out.println("Quelle est la taille du mot demandee?");
+		t_rep = t.nextInt();	
+		char[] tab = new char[t_rep];
+		
+		System.out.println("Pour repondre a vos contraintes, il vous faudra saisir les lettres imposees dans le mot. Saisir un 0 lorsqu'aucune lettre n'est demandee dans la position.");
+		Scanner p = new Scanner(System.in);
+		for(int g = 1; g <= t_rep; g++){
+			System.out.println("Quelle lettre contient le mot dans la position "+g+" ?");
+			tab[g-1] = p.next().charAt(0);
+		}
+		
+		File temporaire2 = new File("temporaire2.txt");
+		
+		BufferedReader entree2 = new BufferedReader(new FileReader(temporaire));
+		BufferedWriter sortie2 = new BufferedWriter(new FileWriter(temporaire2));
+		
+		String ligne2;
+		while((ligne2 = entree2.readLine()) != null){
+			String trimmed2 = ligne2.trim();
+			int k, count;
+			count = 0;
+			if(trimmed2.length() != t_rep){
+				continue;
+			}
+			else{
+			    for(k = 0; k < trimmed2.length(); k++){
+				    if((tab[k] == '0') || ((tab[k] != '0') && (tab[k] == ligne2.charAt(k)))){
+					    count ++;
+				    }
+				    else{
+					    count = count;
+				    }
+			    }
+			    if(count == t_rep){
+				sortie2.write(ligne2 + System.getProperty("line.separator"));
+			    }
+			    else{
+				    continue;
+			    }
+			}
+		}
+		entree2.close();
+		sortie2.close();
 	}
 }
-
