@@ -21,7 +21,7 @@
  * 
  */
 
-
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,8 +30,7 @@ import java.util.Scanner;
 public class PROJET_INFO {
 	
 	public static void main (String[] args) throws IOException {
-		File temporaire = new File("temporaire.txt");
-		BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
+		
 		String L1m,L1M,L2m,L2M,L3m,L3M,L4m,L4M,L5m,L5M,L6m,L6M,L7m,L7M;
 		String L1NM, L2NM, L3NM, L4NM, L5NM, L6NM, L7NM, L8NM, L9NM, L10NM, L11NM, L12NM, L13NM, L14NM, L15NM, L16NM, L17NM, L18NM, L19NM;
 		String L1Nm,L2Nm,L3Nm,L4Nm,L5Nm,L6Nm,L7Nm,L8Nm,L9Nm,L10Nm,L11Nm,L12Nm,L13Nm,L14Nm,L15Nm,L16Nm,L17Nm,L18Nm,L19Nm;
@@ -70,6 +69,8 @@ public class PROJET_INFO {
 	    
 	    //afficher les lettres differentes du tirage
 	    try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			FileInputStream file = new FileInputStream("Alphabet.txt");//necessite d'avoir sur son ordinateur un fichier texte avec les lettres de l'alphabet
 			Scanner scanner = new Scanner(file); 
 			String currentLine=null;
@@ -135,6 +136,8 @@ public class PROJET_INFO {
 		
 		//Afficher les mots jouables
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 7 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -247,6 +250,8 @@ public class PROJET_INFO {
 		//A partir d'ici on répète la même boucle mais simplement qu'on affiche les mots dont le count vaut 6 puis ceux de 5 etc jusqu'à 1.
 		//Cela permet de trier les mots et de les afficher dans l'ordre du nombre de lettres.
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 6 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -358,6 +363,8 @@ public class PROJET_INFO {
 		}
 				
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 5 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -469,6 +476,8 @@ public class PROJET_INFO {
 		}
 				
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 4 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -580,6 +589,8 @@ public class PROJET_INFO {
 		}
 				
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 3 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -691,6 +702,8 @@ public class PROJET_INFO {
 		}
 				
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 2 lettres:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -802,6 +815,8 @@ public class PROJET_INFO {
 		}
 				
 		try{
+			File temporaire = new File("temporaire.txt");
+			BufferedWriter sortie = new BufferedWriter(new FileWriter(temporaire));
 			System.out.println("");
 			System.out.println("voici les mots que vous pouvez jouer en 1 lettre:");
 			FileInputStream file = new FileInputStream("dictionnaireScrabble.txt");   
@@ -930,6 +945,7 @@ public class PROJET_INFO {
 		}
 		
 		File temporaire2 = new File("temporaire2.txt");
+		File temporaire = new File("temporaire.txt");
 		
 		BufferedReader entree2 = new BufferedReader(new FileReader(temporaire));
 		BufferedWriter sortie2 = new BufferedWriter(new FileWriter(temporaire2));
